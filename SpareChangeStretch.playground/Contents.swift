@@ -4,15 +4,16 @@ import UIKit
 
 var str = "Hello, playground"
 
-func change(amount: Double) {
-    let dollar = 1.0
-    let quarter = 0.25
-    let dime = 0.10
-    let nickel = 0.05
-    let penny = 0.01
+func change(amount: Double) -> String {
+    let amountInCents = Int(amount * 100)
+        let dollar = amountInCents / 100
+        let quarters = (amountInCents - dollar*100) / 25
+        let dimes = (amountInCents - dollar*100 - quarters*25) / 10
+        let nickels = (amountInCents - dollar*100 - quarters*25 - dimes*10) / 5
+        let pennies = amountInCents % 5
     
-    if
-    print ("\(floor(amount)/dollar), ")
+        return "Your change is \(dollar) dollars, \(quarters) quarters, \(dimes) dimes, \(nickels) nickels, and \(pennies) pennies."
+    
 }
 
-change(2.15)
+print(change(2.79))
